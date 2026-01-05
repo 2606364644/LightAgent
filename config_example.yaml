@@ -1,0 +1,129 @@
+# LightAgent Configuration Example
+
+# Model configuration
+models:
+  openai:
+    provider: "openai"
+    model_name: "gpt-3.5-turbo"
+    api_key: "${OPENAI_API_KEY}"  # Use environment variable
+    api_base: null
+    temperature: 0.7
+    max_tokens: 2000
+
+  anthropic:
+    provider: "anthropic"
+    model_name: "claude-3-sonnet-20240229"
+    api_key: "${ANTHROPIC_API_KEY}"
+    temperature: 0.7
+    max_tokens: 2000
+
+  ollama:
+    provider: "ollama"
+    model_name: "llama2"
+    api_base: "http://localhost:11434"
+    temperature: 0.7
+
+# Agent configurations
+agents:
+  assistant:
+    name: "assistant"
+    model: "openai"
+    system_prompt: |
+      You are a helpful assistant with access to various tools.
+      Always be friendly and professional in your responses.
+    max_iterations: 10
+    timeout: 30.0
+    enable_middleware: true
+    tools:
+      - calculator
+      - weather
+      - search
+
+  sales_agent:
+    name: "sales_agent"
+    model: "openai"
+    system_prompt: |
+      You are a sales assistant. Help customers with product information,
+      pricing, and recommendations. Always be helpful and courteous.
+    max_iterations: 5
+    tools:
+      - product_search
+      - price_lookup
+
+# Tool configurations
+tools:
+  calculator:
+    type: "function"
+    name: "calculator"
+    description: "Calculate mathematical expressions"
+
+  weather:
+    type: "function"
+    name: "weather"
+    description: "Get weather information for a location"
+    config:
+      api_key: "${WEATHER_API_KEY}"
+
+  search:
+    type: "rag"
+    name: "search"
+    description: "Search knowledge base"
+    config:
+      top_k: 5
+      similarity_threshold: 0.7
+      chunk_size: 1000
+
+  product_search:
+    type: "mcp"
+    name: "product_search"
+    description: "Search product catalog"
+    config:
+      server_url: "https://api.example.com/mcp"
+      api_key: "${MCP_API_KEY}"
+      timeout: 10.0
+
+# Middleware configuration
+middleware:
+  logging:
+    enabled: true
+    level: "INFO"
+
+  cache:
+    enabled: true
+    ttl_seconds: 300
+
+  rate_limit:
+    enabled: true
+    calls_per_minute: 60
+
+  validation:
+    enabled: true
+    max_length: 10000
+
+  retry:
+    enabled: true
+    max_retries: 3
+    backoff_factor: 1.5
+
+# A2A protocol settings
+a2a:
+  message_bus:
+    max_history: 1000
+    enable_broadcast: true
+    enable_delegation: true
+
+# RAG configuration
+rag:
+  embedding_model: "text-embedding-ada-002"
+  chunk_size: 1000
+  chunk_overlap: 200
+  vector_store:
+    type: "memory"  # or "faiss", "chroma", "pinecone"
+    config:
+      dimension: 1536
+
+# Logging configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: null  # or "lightagent.log"
