@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "WebSearch",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "mcp__web-search-prime__webSearchPrime"
     ],
     "deny": [],
     "ask": []
