@@ -57,10 +57,85 @@ Understanding AgentConfig vs Agent.create().
 - File-based config
 - Best practices
 
+### [Multi-Workflow System](MULTI_WORKFLOW_SYSTEM.md)
+Advanced workflow management with multiple workflow types.
+
+**Topics covered:**
+- 5 different workflow types (Planning, Sequential, Interactive, Code-Execute-Refine, Human-in-the-Loop)
+- WorkflowManager for concurrent execution
+- Lifecycle control (pause/resume/cancel)
+- Event callbacks and monitoring
+- Custom workflow type creation
+
+### [Multi-Workflow Guide](WORKFLOW_MULTI_GUIDE.md)
+Guide for using multiple workflows concurrently.
+
+**Topics covered:**
+- Multi-workflow vs single-workflow architecture
+- Workflow instances and management
+- Real-world use cases (CI/CD, research, batch processing)
+- Priority scheduling
+- Event listening
+
+### [Workflow Prompts and Tools](WORKFLOW_PROMPTS_AND_TOOLS.md)
+Guide for configuring custom prompts and tools for workflows.
+
+**Topics covered:**
+- Prompt template system
+- Tool pool management (global, workflow-type, instance)
+- Tool reuse across workflows
+- Custom configuration for each workflow type
+- Best practices for tool organization
+
+### [Workflow Architecture](WORKFLOW_ARCHITECTURE.md)
+Complete architecture overview of the workflow system.
+
+**Topics covered:**
+- Architecture layers and components
+- Tool inheritance hierarchy
+- Prompt configuration hierarchy
+- Usage patterns and best practices
+- File organization and structure
+
+### [Workflow Quick Reference](WORKFLOW_QUICK_REFERENCE.md)
+Quick reference for common workflow tasks.
+
+**Topics covered:**
+- Quick start guide
+- Core API reference
+- Workflow types overview
+- Tool reuse patterns
+- Configuration templates
+- Event callbacks
+- Custom workflows
+
+### [File-based Prompts](WORKFLOW_FILE_PROMPTS.md)
+Guide for storing prompts in file system instead of code.
+
+**Topics covered:**
+- Why use file-based prompts
+- Directory structure
+- Supported formats (YAML/JSON/TXT)
+- Hot reload support
+- Creating and managing prompts
+- Migration from code-based prompts
+
+### [File Prompts Summary](WORKFLOW_FILE_PROMPTS_SUMMARY.md)
+Summary of file-based prompt system implementation.
+
+**Topics covered:**
+- Problem statement (code bloat)
+- Solution architecture
+- Supported formats comparison
+- Usage patterns
+- Best practices
+- When to use file vs code prompts
+
 ## Examples
 
 See the `../examples/` directory for working code examples:
 
+### Core Examples
 1. **simple_demo.py** - Minimal working example
 2. **basic_agent.py** - Agent with function tools
 3. **rag_agent.py** - Knowledge base with RAG
@@ -69,6 +144,54 @@ See the `../examples/` directory for working code examples:
 6. **multi_model_agent.py** - Multi-model function calling
 7. **prompt_engineering.py** - Prompt engineering and tool descriptions
 8. **simplified_usage.py** - AgentConfig vs Agent.create() comparison
+
+### Workflow Examples
+9. **workflow_types_example.py** - 8 examples of different workflow types
+   - Planning Workflow (task decomposition)
+   - Sequential Workflow (fixed steps)
+   - Interactive Workflow (multi-round conversation)
+   - Code-Execute-Refine Workflow (iterative code generation)
+   - Human-in-the-Loop Workflow (human approval)
+   - Multiple concurrent workflows
+   - Lifecycle control (pause/resume/cancel)
+   - Listing and filtering workflows
+
+10. **workflow_advanced_example.py** - 6 advanced examples of prompts and tools
+    - Global tool pool (shared by all workflows)
+    - Workflow-specific tools
+    - Instance-specific tools
+    - Custom prompt templates
+    - Tool reuse across workflows
+    - Combined configuration (prompts + tools)
+
+11. **prompt_loader_example.py** - 6 examples of file-based prompt system
+    - Loading prompts from file system
+    - Using different formats (YAML/JSON/TXT)
+    - Saving new prompts to files
+    - Hot reload on file changes
+    - Custom prompt directories
+    - Mixed usage (file + code prompts)
+
+### Prompt Examples
+
+The `examples/prompts/` directory contains example prompt templates organized by workflow type:
+
+- **planning/** - Planning workflow prompts
+  - `default.yaml` - Default task planning
+  - `research.yaml` - Research planning (Chinese)
+  - `simple.txt` - Simple text format
+
+- **sequential/** - Sequential workflow prompts
+  - `default.yaml` - Default sequential execution
+
+- **interactive/** - Interactive workflow prompts
+  - `customer_service.yaml` - Customer service bot (Chinese)
+
+- **code_execute_refine/** - Code generation prompts
+  - `python.yaml` - Python code generation
+
+- **human_loop/** - Human-in-the-loop prompts
+  - `content_review.yaml` - Content moderation (Chinese)
 
 ## Configuration
 

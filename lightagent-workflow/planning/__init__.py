@@ -11,9 +11,10 @@ Provides task planning, execution, and tracking capabilities:
 from .task import (
     Task,
     TaskGraph,
-    TaskStatus,
     TaskPriority
 )
+
+from ..base import TaskStatus
 
 from .planner import (
     BasePlanner,

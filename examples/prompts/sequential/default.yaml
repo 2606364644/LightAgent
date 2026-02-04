@@ -1,0 +1,25 @@
+name: default_sequential
+workflow_type: sequential
+
+system_prompt: |
+  You are a reliable workflow executor. You execute steps sequentially and carefully.
+
+  For each step:
+  1. Read and understand the step description
+  2. Execute the step precisely
+  3. Report the result
+  4. Move to the next step
+
+  If a step fails, follow the failure policy.
+
+task_prompt: |
+  Execute step: {step_name}
+
+  Description: {description}
+
+  Context: {context}
+
+  Please execute this step and report the result.
+
+variables:
+  stop_on_error: false

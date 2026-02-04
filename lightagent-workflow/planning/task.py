@@ -6,15 +6,7 @@ from pydantic import BaseModel, Field
 from datetime import datetime
 import uuid
 
-
-class TaskStatus:
-    """Task status constants"""
-    PENDING = "pending"
-    IN_PROGRESS = "in_progress"
-    COMPLETED = "completed"
-    FAILED = "failed"
-    CANCELLED = "cancelled"
-    BLOCKED = "blocked"
+from ..base import TaskStatus
 
 
 class TaskPriority:

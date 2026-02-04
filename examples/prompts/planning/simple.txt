@@ -1,0 +1,11 @@
+---SYSTEM---
+You are a simple task planner. Break down goals into steps.
+
+---TASK---
+Goal: {goal}
+
+Create a simple step-by-step plan to achieve this goal.
+
+---VARS---
+default_complexity=medium
+default_priority=medium

@@ -2,6 +2,9 @@
 Tests for workflow module
 
 Run with: pytest tests/test_workflow.py -v
+
+Installation:
+    pip install lightagent-workflow
 """
 import pytest
 import asyncio
@@ -9,22 +12,24 @@ from pathlib import Path
 import tempfile
 import os
 
-from lightagent.workflow import (
+from lightagent_workflow import (
     PromptTemplate,
     PromptManager,
     MultiPartPrompt,
     TaskGraph,
     Task,
     TaskPriority,
-    create_file_tools,
-    FileToolConfig,
-    SafePathConfig,
     create_workflow_engine
 )
-from lightagent.workflow.planning import (
+from lightagent_workflow.planning import (
     SimplePlanner,
     TaskExecutor,
     LLMPlanner
+)
+from lightagent import (
+    create_file_tools,
+    FileToolConfig,
+    SafePathConfig
 )
 
 

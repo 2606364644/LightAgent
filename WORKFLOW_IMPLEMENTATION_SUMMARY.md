@@ -4,8 +4,20 @@
 
 成功在 LightAgent 框架中实现了类似 DeepAgents 的 workflow 功能，提供了完整的工作流管理、任务规划、文件系统访问和增强提示词系统。
 
+**重要更新（2026-02-04）：** workflow 模块已独立为 `lightagent-workflow` 包，可单独安装使用。
+
 ## 实现日期
 2025-12-31
+
+## 安装
+
+```bash
+# 核心包
+pip install lightagent
+
+# 工作流扩展包（可选）
+pip install lightagent-workflow
+```
 
 ## 核心功能
 
@@ -28,7 +40,7 @@
 
 **使用示例：**
 ```python
-from lightagent.workflow import PromptTemplate
+from lightagent_workflow import PromptTemplate
 
 template = PromptTemplate(
     template="You are a {{role}}. Task: {{task}}.",
@@ -60,7 +72,7 @@ prompt = template.format(role="Python expert", task="explain decorators")
 
 **使用示例：**
 ```python
-from lightagent.workflow import create_planner, TaskGraph, Task
+from lightagent_workflow import create_planner, TaskGraph, Task
 
 # 创建规划器
 planner = create_planner(planner_type='llm', agent=agent)
@@ -103,7 +115,7 @@ levels = graph.get_execution_order()
 from lightagent.tools import create_file_tools, FileToolConfig, SafePathConfig
 
 # 为了向后兼容，也可以从 workflow 模块导入
-# from lightagent.workflow import create_file_tools, FileToolConfig, SafePathConfig
+# from lightagent_workflow import create_file_tools, FileToolConfig, SafePathConfig
 
 # 配置安全限制
 config = FileToolConfig(
@@ -139,7 +151,7 @@ for tool in tools:
 
 **使用示例：**
 ```python
-from lightagent.workflow import create_workflow_engine
+from lightagent_workflow import create_workflow_engine
 
 # 创建引擎
 engine = await create_workflow_engine(
@@ -253,7 +265,7 @@ lightagent/workflow/
 ### 与现有 Agent 集成
 
 ```python
-from lightagent.workflow import enhance_agent_with_workflow
+from lightagent_workflow import enhance_agent_with_workflow
 
 # 增强现有 agent
 agent = enhance_agent_with_workflow(
@@ -268,7 +280,7 @@ result = await agent.execute_workflow("Build a calculator")
 ### 独立使用
 
 ```python
-from lightagent.workflow import (
+from lightagent_workflow import (
     PromptTemplate,
     PromptManager,
     create_planner,

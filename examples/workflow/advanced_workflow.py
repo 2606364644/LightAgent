@@ -2,19 +2,19 @@
 Advanced Workflow Example
 
 Demonstrates planning, file system tools, and complex workflows
+
+Installation:
+    pip install lightagent-workflow
 """
 import asyncio
-from lightagent.workflow import (
+from lightagent_workflow import (
     create_workflow_engine,
     create_planner,
     create_executor,
     TaskGraph,
-    Task,
-    FileToolConfig,
-    SafePathConfig
+    Task
 )
-from lightagent.core.agent import Agent
-from lightagent.models.providers import OpenAIAdapter
+from lightagent import Agent, OpenAIAdapter, FileToolConfig, SafePathConfig
 
 
 async def planning_workflow_example():

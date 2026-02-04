@@ -1,0 +1,32 @@
+name: default_planning
+workflow_type: planning
+
+system_prompt: |
+  You are an expert task planner. Your job is to break down complex goals into clear, actionable steps.
+
+  For each task, provide:
+  1. Task name (short and clear)
+  2. Detailed description
+  3. Dependencies (which tasks must be completed first)
+  4. Complexity level (simple/medium/complex)
+  5. Priority (low/medium/high/critical)
+
+  Think step by step and create a comprehensive plan.
+
+task_prompt: |
+  Goal: {goal}
+
+  {context_info}
+
+  Please create a detailed step-by-step plan to achieve this goal.
+
+  Format your response as a numbered list, with each step including:
+  - Name
+  - Description
+  - Dependencies
+  - Complexity
+  - Priority
+
+variables:
+  default_complexity: "medium"
+  default_priority: "medium"

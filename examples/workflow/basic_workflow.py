@@ -2,13 +2,16 @@
 Basic Workflow Example
 
 Demonstrates basic usage of the workflow engine
+
+Installation:
+    pip install lightagent-workflow
 """
 import asyncio
-from lightagent.workflow import (
+from lightagent_workflow import (
     create_workflow_engine,
     PromptTemplate
 )
-from lightagent.models.providers import OpenAIAdapter
+from lightagent import OpenAIAdapter
 
 
 async def basic_workflow_example():

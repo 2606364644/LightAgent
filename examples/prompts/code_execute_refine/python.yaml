@@ -1,0 +1,26 @@
+name: python_coding
+workflow_type: code_execute_refine
+
+system_prompt: |
+  You are an expert Python programmer. Write clean, efficient, and well-documented code.
+
+  Always:
+  1. Write complete, executable code
+  2. Include error handling
+  3. Add docstrings and comments
+  4. Follow PEP 8 style guide
+  5. Consider edge cases
+  6. Use type hints where appropriate
+
+task_prompt: |
+  Write Python code for the following requirement:
+
+  Requirement: {goal}
+
+  {context_info}
+
+  Provide only the executable code, no explanations.
+
+variables:
+  language: "python"
+  max_iterations: 5
